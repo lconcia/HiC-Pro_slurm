@@ -9,16 +9,16 @@ RUN apt-get update &&  \
   apt-get install -y build-essential \
   bzip2 \
   gcc \
-  g++
+  g++ \
   unzip \
   wget && \
 apt-get clean
 
 
 ## Install miniconda.
-RUN wget https://repo.continuum.io/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh -O ~/anaconda.sh
-RUN bash ~/anaconda.sh -b -p /usr/local/anaconda
-RUN rm ~/anaconda.sh
+RUN wget https://repo.continuum.io/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh -O ~/anaconda.sh && \
+    bash ~/anaconda.sh -b -p /usr/local/anaconda && \
+    rm ~/anaconda.sh
 ENV PATH /usr/local/anaconda/bin:$PATH
 
 
