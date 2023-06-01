@@ -31,7 +31,7 @@ ENV PATH /usr/local/anaconda/envs/HiC-Pro_v3.1.0/bin:$PATH
 RUN cd /tmp && \
     echo "master.zip" | wget --base=https://github.com/lconcia/HiC-Pro_slurm/archive/refs/heads/ -i - -O hicpro_latest.zip && \
     unzip hicpro_latest.zip && \
-    cd HiC-Pro-master  && \ 
+    cd HiC-Pro_slurm-master && \ 
     make configure prefix=/ && \
     make install && \
     cd .. && \
