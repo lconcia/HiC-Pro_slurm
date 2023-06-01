@@ -5,13 +5,14 @@ LABEL authors="Nicolas Servant" \
       description="Docker image containing all requirements for the HiC-Pro pipeline"
 
 ## Install system tools
-RUN apt-get update \
-  && apt-get install -y build-essential \
-  wget \
-  unzip \
+RUN apt-get update &&  \
+  apt-get install -y build-essential \
   bzip2 \
   gcc \
-  g++ && apt-get clean
+  g++
+  unzip \
+  wget && \
+apt-get clean
 
 
 ## Install miniconda.
@@ -28,7 +29,7 @@ ENV PATH /usr/local/anaconda/envs/HiC-Pro_v3.1.0/bin:$PATH
 
 ## Install HiCPro
 RUN cd /tmp && \
-    echo "master.zip" | wget --base=http://github.com/nservant/HiC-Pro/archive/ -i - -O hicpro_latest.zip && \
+    echo "master.zip" | wget --base=https://github.com/lconcia/HiC-Pro_slurm/archive/refs/heads/ -i - -O hicpro_latest.zip && \
     unzip hicpro_latest.zip && \
     cd HiC-Pro-master  && \ 
     make configure prefix=/ && \
